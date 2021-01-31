@@ -197,4 +197,19 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		category: "Physical",
 		priority: 0,
 	},
+
+
+	crocbite: {
+		inherit: true,
+		accuracy: 100,
+		basePower: 70,
+		category: "Physical",
+		name: "Croc-Bite",
+		pp: 25,
+		priority: 0,
+		flags: {bite: 1, contact: 1, protect: 1, mirror: 1},
+		target: "normal",
+		type: "Water",
+		contestType: "Tough",
+	}
 }
