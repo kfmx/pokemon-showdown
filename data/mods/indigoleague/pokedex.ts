@@ -2,7 +2,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	absol: {
 		inherit: true,
 		baseStats: {hp: 80, atk: 75, def: 70, spa: 110, spd: 70, spe: 95},
-		abilities: {0: "Pressure", 1: "Justified", H: "Frisk"}
+		abilities: {0: "Pressure", 1: "Justified", H: "Disaster Warning"}
 	},
 	feraligatr: {
 		inherit: true,
