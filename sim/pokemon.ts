@@ -1610,7 +1610,7 @@ export class Pokemon {
 		if (!sourceEffect && this.battle.effect) sourceEffect = this.battle.effect;
 		if (!source && this.battle.event && this.battle.event.target) source = this.battle.event.target;
 		const item = this.getItem();
-		if (this.battle.runEvent('UseItem', this, null, null, item)) {
+		if (this.battle.runEvent('UseItem', this, null, null, item) && this.battle.runEvent('TryUseItem', this, null, null, item)) {
 			switch (item.id) {
 			case 'redcard':
 				this.battle.add('-enditem', this, item, '[of] ' + source);
