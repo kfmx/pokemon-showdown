@@ -15,6 +15,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 90, atk: 100, def: 110, spa: 80, spd: 60, spe: 50},
 		abilities: {0: "Filter", 1: "Stamina", H: "Rock Head"}
 	},
+	alakazam: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 50, def: 45, spa: 120, spd: 85, spe: 115},
+		abilities: {0: "Trace", 1: "Magic Guard", H: "Perfect Memory"}
+	},
 	altaria: {
 		inherit: true,
 		types: ["Dragon", "Fairy"],
