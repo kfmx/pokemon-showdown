@@ -15,6 +15,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 90, atk: 100, def: 110, spa: 80, spd: 60, spe: 50},
 		abilities: {0: "Filter", 1: "Stamina", H: "Rock Head"}
 	},
+	altaria: {
+		inherit: true,
+		types: ["Dragon", "Fairy"],
+		baseStats: {hp: 75, atk: 70, def: 90, spa: 70, spd: 105, spe: 80},
+		abilities: {0: "Cloud Nine", 1: "Pixilate", H: "Updraft"}
+	},
 	feraligatr: {
 		inherit: true,
 		baseStats: {hp: 75, atk: 105, def: 95, spa: 70, spd: 80, spe: 70},

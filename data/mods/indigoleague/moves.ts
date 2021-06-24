@@ -204,7 +204,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	//new moves
 	crocbite: {
-		inherit: true,
 		accuracy: 100,
 		basePower: 70,
 		category: "Physical",
@@ -215,5 +214,61 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		target: "normal",
 		type: "Water",
 		contestType: "Tough",
+	},
+	fireballs: {
+		accuracy: 90,
+		basePower: 20,
+		category: "Special",
+		name: "Fireballs",
+		pp: 25,
+		priority: 0,
+		flags: {bullet: 1, defrost: 1, distance: 1, mirror: 1, protect: 1},
+		multihit: 4,
+		secondary: {
+			chance: 10,
+			status: 'brn'
+		},
+		target: "any",
+		type: "Fire",
+		contestType: "Beauty"
+	},
+	serenade: {
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Serenade",
+		pp: 15,
+		priority: 0,
+		flags: {authentic: 1, mirror: 1, protect: 1, reflectable: 1, sounds: 1},
+		onHit(pokemon) {
+			const effect = this.sample([1, 2, 3, 4]);
+			switch (effect) {
+				case 1:
+					if (!pokemon.status && pokemon.runStatusImmunity('slp')){
+						pokemon.addVolatile('yawn');
+					} else {
+						this.add('-message', pokemon.name + ' is already asleep!');
+					}
+					break;
+				case 2: this.boost({'atk': -2}, pokemon); break;
+				case 3: this.boost({'spa': -2}, pokemon); break;
+				default: this.boost({'atk': -1, 'spa': -1}, pokemon);
+			}
+		},
+		condition: {
+			noCopy: true, // doesn't get copied by Baton Pass
+			duration: 2,
+			onStart(target, source) {
+				this.add('-start', target, 'move: Yawn', '[of] ' + source);
+			},
+			onResidualOrder: 23,
+			onEnd(target) {
+				this.add('-end', target, 'move: Yawn', '[silent]');
+				target.trySetStatus('slp', this.effectState.source);
+			},
+		},
+		target: "normal",
+		type: "Normal",
+		contestType: "Beauty"
 	}
 }
