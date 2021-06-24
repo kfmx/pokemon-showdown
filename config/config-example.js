@@ -603,6 +603,7 @@ exports.grouplist = [
 		declare: true,
 		modchat: 'a',
 		gamemanagement: true,
+		forcewin: true,
 		tournaments: true,
 		joinbattle: true,
 	},
@@ -648,6 +649,14 @@ exports.grouplist = [
 		minigame: true,
 		modchat: true,
 		hiderank: true,
+	},
+	{
+		symbol: '\u25B8',
+		id: "sectionleader",
+		name: "Section Leader",
+		inherit: '+',
+
+		roomonly: true,
 	},
 	{
 		// Bots are ranked below Driver/Mod so that Global Bots can be kept out
