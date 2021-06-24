@@ -31,20 +31,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			duration: 2,
 			onLockMove: 'iceball',
 			onStart(target) {
-				this.effectData.hitCount = 1;
-				this.effectData.spe = 0;
+				this.effectState.hitCount = 1;
+				this.effectState.spe = 0;
 				const curSpe = target.boosts.spe;
 				this.boost({spe: 1}, target, target);
-				if (curSpe !== target.boosts.spe) this.effectData.spe--;
+				if (curSpe !== target.boosts.spe) this.effectState.spe--;
 			},
 			onRestart(target) {
-				this.effectData.hitCount++;
-				if (this.effectData.hitCount < 5) {
-					this.effectData.duration = 2;
+				this.effectState.hitCount++;
+				if (this.effectState.hitCount < 5) {
+					this.effectState.duration = 2;
 				}
 				const curSpe = target.boosts.spe;
 				this.boost({spe: 1}, target, target);
-				if (curSpe !== target.boosts.spe) this.effectData.spe--;
+				if (curSpe !== target.boosts.spe) this.effectState.spe--;
 			},
 			onResidual(target) {
 				if (target.lastMove && target.lastMove.id === 'struggle') {
@@ -53,9 +53,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 			},
 			onEnd(target) {
-				if (this.effectData.spe) {
+				if (this.effectState.spe) {
 					const boosts: SparseBoostsTable = {};
-					boosts.spe = this.effectData.spe;
+					boosts.spe = this.effectState.spe;
 					this.boost(boosts, target, target);
 				}
 			}
@@ -99,20 +99,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			duration: 2,
 			onLockMove: 'rollout',
 			onStart(target) {
-				this.effectData.hitCount = 1;
-				this.effectData.spe = 0;
+				this.effectState.hitCount = 1;
+				this.effectState.spe = 0;
 				const curSpe = target.boosts.spe;
 				this.boost({spe: 1}, target, target);
-				if (curSpe !== target.boosts.spe) this.effectData.spe--;
+				if (curSpe !== target.boosts.spe) this.effectState.spe--;
 			},
 			onRestart(target) {
-				this.effectData.hitCount++;
-				if (this.effectData.hitCount < 5) {
-					this.effectData.duration = 2;
+				this.effectState.hitCount++;
+				if (this.effectState.hitCount < 5) {
+					this.effectState.duration = 2;
 				}
 				const curSpe = target.boosts.spe;
 				this.boost({spe: 1}, target, target);
-				if (curSpe !== target.boosts.spe) this.effectData.spe--;
+				if (curSpe !== target.boosts.spe) this.effectState.spe--;
 			},
 			onResidual(target) {
 				if (target.lastMove && target.lastMove.id === 'struggle') {
@@ -121,9 +121,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 			},
 			onEnd(target) {
-				if (this.effectData.spe) {
+				if (this.effectState.spe) {
 					const boosts: SparseBoostsTable = {};
-					boosts.spe = this.effectData.spe;
+					boosts.spe = this.effectState.spe;
 					this.boost(boosts, target, target);
 				}
 			},
@@ -145,29 +145,29 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		condition: {
 			noCopy: true,
 			onStart() {
-				this.effectData.layers = 0;
-				this.effectData.def = 0;
-				this.effectData.spd = 0;
+				this.effectState.layers = 0;
+				this.effectState.def = 0;
+				this.effectState.spd = 0;
 			},
 			onAfterMove(target) {
-				if (this.effectData.layers >= 3) return false;
-				this.effectData.layers++;
-				this.add('-start', target, 'stockpile' + this.effectData.layers);
+				if (this.effectState.layers >= 3) return false;
+				this.effectState.layers++;
+				this.add('-start', target, 'stockpile' + this.effectState.layers);
 				const curDef = target.boosts.def;
 				const curSpD = target.boosts.spd;
 				this.boost({def: 1, spd: 1}, target, target);
-				if (curDef !== target.boosts.def) this.effectData.def--;
-				if (curSpD !== target.boosts.spd) this.effectData.spd--;
+				if (curDef !== target.boosts.def) this.effectState.def--;
+				if (curSpD !== target.boosts.spd) this.effectState.spd--;
 			},
 			onEnd(target) {
-				if (this.effectData.def || this.effectData.spd) {
+				if (this.effectState.def || this.effectState.spd) {
 					const boosts: SparseBoostsTable = {};
-					if (this.effectData.def) boosts.def = this.effectData.def;
-					if (this.effectData.spd) boosts.spd = this.effectData.spd;
+					if (this.effectState.def) boosts.def = this.effectState.def;
+					if (this.effectState.spd) boosts.spd = this.effectState.spd;
 					this.boost(boosts, target, target);
 				}
 				this.add('-end', target, 'Stockpile');
-				if (this.effectData.def !== this.effectData.layers * -1 || this.effectData.spd !== this.effectData.layers * -1) {
+				if (this.effectState.def !== this.effectState.layers * -1 || this.effectState.spd !== this.effectState.layers * -1) {
 					this.hint("In Gen 7, Stockpile keeps track of how many times it successfully altered each stat individually.");
 				}
 			},
