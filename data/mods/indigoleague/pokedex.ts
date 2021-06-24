@@ -1,8 +1,13 @@
 export const Pokedex: {[k: string]: ModdedSpeciesData} = {
+	absol: {
+		inherit: true,
+		baseStats: {hp: 80, atk: 75, def: 70, spa: 110, spd: 70, spe: 95},
+		abilities: {0: "Pressure", 1: "Justified", H: "Frisk"}
+	},
 	feraligatr: {
 		inherit: true,
 		baseStats: {hp: 75, atk: 105, def: 95, spa: 70, spd: 80, spe: 70},
-		abilities: {0: "Strong Jaw", 1: "Swift Swim", H: "Sheer Force"},
+		abilities: {0: "Strong Jaw", 1: "Swift Swim", H: "Sheer Force"}
 	},
 	hitmonchan: {
 		inherit: true,

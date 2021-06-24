@@ -84,6 +84,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		basePower: 85
 	},
+	pursuit: {
+		inherit: true,
+		isNonstandard: null
+	},
 	revenge: {
 		inherit: true,
 		basePower: 70,
