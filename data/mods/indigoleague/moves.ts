@@ -3,6 +3,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		accuracy: 100,
 		type: "Fairy",
+		isNonstandard: null
 	},
 	crushclaw: {
 		inherit: true,
@@ -197,8 +198,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		category: "Physical",
 		priority: 0,
 	},
-
-
+	//new moves
 	crocbite: {
 		inherit: true,
 		accuracy: 100,
