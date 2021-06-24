@@ -9,6 +9,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 80, atk: 100, def: 90, spa: 60, spd: 70, spe: 110},
 		abilities: {0: "Unnerve", 1: "Hustle", H: "Imposing"}
 	},
+	aggron: {
+		inherit: true,
+		types: ["Steel"],
+		baseStats: {hp: 90, atk: 100, def: 110, spa: 80, spd: 60, spe: 50},
+		abilities: {0: "Filter", 1: "Stamina", H: "Rock Head"}
+	},
 	feraligatr: {
 		inherit: true,
 		baseStats: {hp: 75, atk: 105, def: 95, spa: 70, spd: 80, spe: 70},
