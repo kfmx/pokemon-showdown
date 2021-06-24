@@ -26,6 +26,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 75, atk: 70, def: 90, spa: 70, spd: 105, spe: 80},
 		abilities: {0: "Cloud Nine", 1: "Pixilate", H: "Updraft"}
 	},
+	ampharos: {
+		inherit: true,
+		types: ["Electric", "Dragon"],
+		baseStats: {hp: 90, atk: 70, def: 75, spa: 110, spd: 90, spe: 55},
+		abilities: {0: "Static", 1: "Dazzling", H: "Wonder Skin"}
+	},
 	feraligatr: {
 		inherit: true,
 		baseStats: {hp: 75, atk: 105, def: 95, spa: 70, spd: 80, spe: 70},
