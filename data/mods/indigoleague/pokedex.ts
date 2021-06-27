@@ -38,6 +38,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 80, atk: 99, def: 80, spa: 60, spd: 80, spe: 86},
 		abilities: {0: "Chest Patterns"}
 	},
+	arcanine: {
+		inherit: true,
+		baseStats: {hp: 90, atk: 85, def: 70, spa: 95, spd: 80, spe: 95},
+		abilities: {0: "Flash Fire", 1: "Intimidate", H: "Solar Power"}
+	},
 	feraligatr: {
 		inherit: true,
 		baseStats: {hp: 75, atk: 105, def: 95, spa: 70, spd: 80, spe: 70},
