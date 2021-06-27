@@ -15,8 +15,48 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		}
 	},
 	//new abilities
+	chestpatterns: {
+		name: "Chest Patterns",
+		onStart(pokemon) {
+			//pattern is determined by highest IV that is not 31
+			const stat = Object.entries(pokemon.set.ivs).filter(m => m[1] < 31).sort((a, b) => b[1] - a[1])[0][0] as StatID;
+			let pattern = 'Hunting';
+			switch(stat) {
+				case 'atk': pattern = 'Intimidating'; break;
+				case 'def': pattern = 'Daunting'; break;
+				case 'spa': pattern = 'Imposing'; break;
+				case 'spd': pattern = 'Terrifying'; break;
+				case 'spe': pattern = 'Frightening'; break;
+				default: break;
+			}
+
+			if (stat !== 'hp') {
+				let activated = false;
+				for (const target of pokemon.adjacentFoes()) {
+					if (!activated) {
+						this.add('-ability', pokemon, pattern + " Pattern", 'boost');
+						activated = true;
+					}
+					if (target.volatiles['substitute']) {
+						this.add('-immune', target);
+					} else {
+						let boost: SparseBoostsTable = {};
+						boost[stat] = -1;
+						this.boost(boost, target, pokemon, null, true);
+					}
+				}
+			} else {
+				this.add('-ability', pokemon, pattern + " Pattern", 'boost');
+			}
+		},
+		onModifyPriority(priority, pokemon) {
+			if (pokemon.activeMoveActions < 1) {
+				const isHunterPattern = Object.entries(pokemon.set.ivs).filter(m => m[1] < 31).sort((a, b) => b[1] - a[1])[0][0] === 'hp';
+				if (isHunterPattern) return priority + 1;
+			}
+		},
+	},
 	disasterwarning: {
-		inherit: true,
 		onStart(pokemon) {
 			for (const target of pokemon.side.foe.active) {
 				if (!target || !target.hp) continue;
@@ -44,5 +84,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 		name: "Imposing",
+	},
+	perfectmemory: {
+		//currently has no competitive use, since showdown already shows moves / PP / abilities after usage
+		name: "Perfect Memory"
 	}
 }

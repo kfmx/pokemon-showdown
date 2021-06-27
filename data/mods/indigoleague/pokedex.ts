@@ -32,6 +32,12 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 90, atk: 70, def: 75, spa: 110, spd: 90, spe: 55},
 		abilities: {0: "Static", 1: "Dazzling", H: "Wonder Skin"}
 	},
+	arbok: {
+		inherit: true,
+		types: ["Poison", "Dark"],
+		baseStats: {hp: 80, atk: 99, def: 80, spa: 60, spd: 80, spe: 86},
+		abilities: {0: "Chest Patterns"}
+	},
 	feraligatr: {
 		inherit: true,
 		baseStats: {hp: 75, atk: 105, def: 95, spa: 70, spd: 80, spe: 70},
