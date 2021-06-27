@@ -43,6 +43,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 90, atk: 85, def: 70, spa: 95, spd: 80, spe: 95},
 		abilities: {0: "Flash Fire", 1: "Intimidate", H: "Solar Power"}
 	},
+	ariados: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 90, def: 75, spa: 60, spd: 75, spe: 90},
+		abilities: {0: "Arena Trap", 1: "Skitter", H: "Merciless"}
+	},
 	feraligatr: {
 		inherit: true,
 		baseStats: {hp: 75, atk: 105, def: 95, spa: 70, spd: 80, spe: 70},

@@ -16,7 +16,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	},
 	//new abilities
 	chestpatterns: {
-		name: "Chest Patterns",
 		onStart(pokemon) {
 			//pattern is determined by highest IV that is not 31
 			const stat = Object.entries(pokemon.set.ivs).filter(m => m[1] < 31).sort((a, b) => b[1] - a[1])[0][0] as StatID;
@@ -55,6 +54,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				if (isHunterPattern) return priority + 1;
 			}
 		},
+		name: "Chest Patterns"
 	},
 	disasterwarning: {
 		onStart(pokemon) {
@@ -88,5 +88,13 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	perfectmemory: {
 		//currently has no competitive use, since showdown already shows moves / PP / abilities after usage
 		name: "Perfect Memory"
+	},
+	skitter: {
+		onDamagingHit(damage, target, source, move) {
+			if (move.category === 'Physical') {
+				this.boost({def: -1, spe: 2}, target, target);
+			}
+		},
+		name: "Skitter"
 	}
 }
