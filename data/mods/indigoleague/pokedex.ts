@@ -48,6 +48,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 70, atk: 90, def: 75, spa: 60, spd: 75, spe: 90},
 		abilities: {0: "Arena Trap", 1: "Skitter", H: "Merciless"}
 	},
+	armaldo: {
+		inherit: true,
+		baseStats: {hp:	 75, atk: 100, def: 95, spa: 70, spd: 80, spe: 60},
+		abilities: {0: "Swift Swim", 1: "Own Tempo", H: "Merciless"}
+	},
 	feraligatr: {
 		inherit: true,
 		baseStats: {hp: 75, atk: 105, def: 95, spa: 70, spd: 80, spe: 70},
