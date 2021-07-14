@@ -266,6 +266,8 @@ export class Pokemon {
 		gluttonyFlag?: boolean, // Gen-NEXT
 		innate?: string, // Partners in Crime
 		originalSpecies?: string, // Mix and Mega
+		dollsCurse?: {pokemon: Pokemon, originalMove: MoveSlot}, // Indigo League
+		possessed?: boolean, // Indigo League
 		[key: string]: any,
 	};
 

@@ -53,6 +53,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp:	 75, atk: 100, def: 95, spa: 70, spd: 80, spe: 60},
 		abilities: {0: "Swift Swim", 1: "Own Tempo", H: "Merciless"}
 	},
+	banette: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 110, def: 65, spa: 85, spd: 65, spe: 65},
+		abilities: {0: "Innards Out", 1:"Doll's Curse", H: "Possession"}
+	},
 	feraligatr: {
 		inherit: true,
 		baseStats: {hp: 75, atk: 105, def: 95, spa: 70, spd: 80, spe: 70},

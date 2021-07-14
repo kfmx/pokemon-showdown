@@ -68,6 +68,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		},
 		name: "Disaster Warning"
 	},
+	dollscurse: {
+		name: "Doll's Curse"
+		//all logic for this ability is in data\mods\indigoleague\rulesets.ts
+	},
 	imposing: {
 		onStart(pokemon) {
 			let activated = false;
@@ -88,6 +92,35 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	perfectmemory: {
 		//currently has no competitive use, since showdown already shows moves / PP / abilities after usage
 		name: "Perfect Memory"
+	},
+	possession: {
+		name: "Possession",
+		onDamagingHit(damage, target, source, move) {
+			const hasLessThanThirdHp = target.hp < target.maxhp / 3;
+			if (hasLessThanThirdHp && target.hp > 0 && !source.m.possessed) {
+				source.formeChange(target.species, this.dex.abilities.get('possession'), true);
+				source.setAbility(target.ability, target, true);
+				this.add('-ability', source, target.getAbility().name);
+				source.m.possessed = true;
+				source.moveSlots = [];
+				for (const moveSlot of target.moveSlots) {
+					let moveName = moveSlot.move;
+					if (moveSlot.id === 'hiddenpower') {
+						moveName = 'Hidden Power ' + source.hpType;
+					}
+					source.moveSlots.push({
+						move: moveName,
+						id: moveSlot.id,
+						pp: moveSlot.maxpp,
+						maxpp: moveSlot.maxpp,
+						target: moveSlot.target,
+						disabled: false,
+						used: false,
+						virtual: true,
+					});
+				}
+			}
+		}
 	},
 	skitter: {
 		onDamagingHit(damage, target, source, move) {
