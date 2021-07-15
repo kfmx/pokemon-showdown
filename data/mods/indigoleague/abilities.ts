@@ -94,7 +94,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		name: "Perfect Memory"
 	},
 	possession: {
-		name: "Possession",
 		onDamagingHit(damage, target, source, move) {
 			const hasLessThanThirdHp = target.hp < target.maxhp / 3;
 			if (hasLessThanThirdHp && target.hp > 0 && !source.m.possessed) {
@@ -120,7 +119,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					});
 				}
 			}
-		}
+		},
+		name: "Possession"
 	},
 	skitter: {
 		onDamagingHit(damage, target, source, move) {
@@ -129,5 +129,15 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 		name: "Skitter"
+	},
+	stinger: {
+		onModifyMove(move) {
+			if (!!move.secondaries && move.category === "Physical") {
+				for (const secondary of move.secondaries) {
+					if (secondary.chance && secondary.status === 'psn') secondary.chance = 100;
+				}
+			}
+		},
+		name: "Stinger"
 	}
 }

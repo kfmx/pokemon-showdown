@@ -58,6 +58,11 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 65, atk: 110, def: 65, spa: 85, spd: 65, spe: 65},
 		abilities: {0: "Innards Out", 1:"Doll's Curse", H: "Possession"}
 	},
+	beedrill: {
+		inherit: true,
+		baseStats: {hp: 65, atk: 115, def: 50, spa: 40, spd: 70, spe: 110},
+		abilities: {0: "Swarm", 1: "Sniper", H: "Stinger"}
+	},
 	feraligatr: {
 		inherit: true,
 		baseStats: {hp: 75, atk: 105, def: 95, spa: 70, spd: 80, spe: 70},
